@@ -1,11 +1,6 @@
 import { later } from "@ember/runloop";
-import { Promise } from "rsvp";
 import { apiInitializer } from "discourse/lib/api";
-
-const webWorkerUrl = settings.theme_uploads_local.worker;
-let webWorker;
-
-const wasmUrl = settings.theme_uploads.wasm;
+import { cookSvgBob, stripStyle } from "../lib/renderer";
 
 async function applySvgbob(element, key = "composer") {
   let svgbobs = element.querySelectorAll("pre[data-code-wrap=svgbob]");
@@ -55,37 +50,6 @@ async function applySvgbob(element, key = "composer") {
       later(() => updateMarkdownHeight(svgbob, index), 1000);
     }
   });
-}
-
-let messageSeq = 0;
-let resolvers = {};
-
-async function cookSvgBob(text) {
-  let seq = messageSeq++;
-
-  if (!webWorker) {
-    webWorker = new Worker(webWorkerUrl);
-    webWorker.postMessage(["wasmUrl", wasmUrl]);
-    webWorker.onmessage = function (e) {
-      let incomingSeq = e.data[0];
-      let converted = e.data[1];
-
-      resolvers[incomingSeq](converted);
-      delete resolvers[incomingSeq];
-    };
-  }
-
-  webWorker.postMessage([seq, text]);
-
-  let promise = new Promise((resolve) => {
-    resolvers[seq] = resolve;
-  });
-
-  return promise;
-}
-
-function stripStyle(svg) {
-  return svg.replace(/<style.*<\/style>/s, "");
 }
 
 function updateMarkdownHeight(svgbob, index) {
