@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 import SvgbobDiagram from "../components/svgbob-diagram";
+import svgbobExtension from "../lib/rich-editor-extension";
 
 function renderSvgbob(element, helper) {
   element.querySelectorAll("pre[data-code-wrap=svgbob]").forEach((pre) => {
@@ -16,6 +17,8 @@ function renderSvgbob(element, helper) {
 }
 
 export default apiInitializer("1.13.0", (api) => {
+  api.registerRichEditorExtension(svgbobExtension);
+
   // this is a hack as applySurround expects a top level
   // composer key, not possible from a theme
   window.I18n.translations[window.I18n.locale].js.composer.svgbob_sample = `
