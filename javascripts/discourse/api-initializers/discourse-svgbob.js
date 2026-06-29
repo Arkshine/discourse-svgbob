@@ -19,7 +19,7 @@ function renderSvgbob(element, helper) {
   });
 }
 
-export default apiInitializer("1.13.0", (api) => {
+export default apiInitializer((api) => {
   api.registerRichEditorExtension(svgbobExtension);
 
   const modal = api.container.lookup("service:modal");
