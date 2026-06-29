@@ -3,8 +3,11 @@ import { tracked } from "@glimmer/tracking";
 import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+// eslint-disable-next-line discourse/ui-kit-imports
 import DButton from "discourse/components/d-button";
+// eslint-disable-next-line discourse/ui-kit-imports
 import DModal from "discourse/components/d-modal";
+// eslint-disable-next-line discourse/ui-kit-imports
 import concatClass from "discourse/helpers/concat-class";
 import { or } from "discourse/truth-helpers";
 import { i18n } from "discourse-i18n";

@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { cached, tracked } from "@glimmer/tracking";
 import { cancel } from "@ember/runloop";
 import { trustHTML } from "@ember/template";
+// eslint-disable-next-line discourse/ui-kit-imports
 import loadingSpinner from "discourse/helpers/loading-spinner";
 import discourseLater from "discourse/lib/later";
 import { cookSvgBob, stripStyle } from "../lib/renderer";
