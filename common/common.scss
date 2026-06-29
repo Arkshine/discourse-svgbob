@@ -22,14 +22,15 @@
   }
 
   &__svg {
-    animation: svgbob-fade-in 0.2s ease-in;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: svgbob-fade-in 0.2s ease-in;
+    }
   }
 
   &__loading {
     position: absolute;
+    inset-inline: 0;
     top: 1em;
-    right: 0;
-    left: 0;
     display: flex;
     justify-content: center;
   }
@@ -160,7 +161,7 @@
   &__expand {
     position: absolute;
     top: var(--space-2);
-    right: var(--space-11);
+    inset-inline-end: var(--space-11);
   }
 
   &.--expanded {

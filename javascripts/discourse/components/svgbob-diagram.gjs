@@ -30,7 +30,7 @@ export default class SvgbobDiagram extends Component {
   }
 
   <template>
-    <div class="svgbob-diagram">
+    <div class="svgbob-diagram" ...attributes>
       {{#if this.render.svg}}
         <div class="svgbob-diagram__svg">{{this.render.svg}}</div>
       {{else}}

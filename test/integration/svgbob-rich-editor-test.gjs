@@ -16,7 +16,7 @@ module(
         assert,
         markdown,
         () => {
-          assert.dom(".svgbob-diagram").exists();
+          assert.dom(".svgbob-diagram").exists("renders the svgbob diagram");
         },
         markdown
       );
@@ -29,7 +29,7 @@ module(
         assert,
         "```svgbob height=500\n+--+\n|hi|\n+--+\n```",
         () => {
-          assert.dom(".svgbob-diagram").exists();
+          assert.dom(".svgbob-diagram").exists("renders the svgbob diagram");
         },
         "```svgbob\n+--+\n|hi|\n+--+\n```"
       );
@@ -44,8 +44,10 @@ module(
         assert,
         markdown,
         () => {
-          assert.dom("pre code").exists();
-          assert.dom(".svgbob-diagram").doesNotExist();
+          assert.dom("pre code").exists("renders a plain code block");
+          assert
+            .dom(".svgbob-diagram")
+            .doesNotExist("does not render a svgbob diagram");
         },
         markdown
       );
