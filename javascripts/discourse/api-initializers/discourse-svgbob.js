@@ -3,12 +3,7 @@ import SvgbobEditor from "../components/modal/svgbob-editor";
 import SvgbobDiagram from "../components/svgbob-diagram";
 import svgbobExtension from "../lib/rich-editor-extension";
 
-// prettier-ignore
-const SAMPLE = [
-  "*-------------*",
-  "| hello world |",
-  "*-------------*",
-].join("\n");
+const SAMPLE = "*-------------*\n| hello world |\n*-------------*";
 
 function renderSvgbob(element, helper) {
   element.querySelectorAll("pre[data-code-wrap=svgbob]").forEach((pre) => {
