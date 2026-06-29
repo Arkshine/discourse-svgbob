@@ -1,6 +1,14 @@
 import { apiInitializer } from "discourse/lib/api";
+import SvgbobEditor from "../components/modal/svgbob-editor";
 import SvgbobDiagram from "../components/svgbob-diagram";
 import svgbobExtension from "../lib/rich-editor-extension";
+
+// prettier-ignore
+const SAMPLE = [
+  "*-------------*",
+  "| hello world |",
+  "*-------------*",
+].join("\n");
 
 function renderSvgbob(element, helper) {
   element.querySelectorAll("pre[data-code-wrap=svgbob]").forEach((pre) => {
@@ -19,20 +27,18 @@ function renderSvgbob(element, helper) {
 export default apiInitializer("1.13.0", (api) => {
   api.registerRichEditorExtension(svgbobExtension);
 
-  // this is a hack as applySurround expects a top level
-  // composer key, not possible from a theme
-  window.I18n.translations[window.I18n.locale].js.composer.svgbob_sample = `
-    *-------------*
-    | hello world |
-    *-------------*
-  `;
+  const modal = api.container.lookup("service:modal");
 
   api.addComposerToolbarPopupMenuOption({
     icon: "diagram-project",
     label: themePrefix("insert_svgbob_sample"),
     action: (toolbarEvent) => {
-      toolbarEvent.applySurround("\n```svgbob\n", "\n```\n", "svgbob_sample", {
-        multiline: false,
+      modal.show(SvgbobEditor, {
+        model: {
+          initialText: SAMPLE,
+          onApply: (text) =>
+            toolbarEvent.addText(`\n\`\`\`svgbob\n${text}\n\`\`\`\n`),
+        },
       });
     },
   });

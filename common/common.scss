@@ -97,3 +97,86 @@
     opacity: 1;
   }
 }
+
+.composer-svgbob-node {
+  position: relative;
+  white-space: normal;
+
+  &.ProseMirror-selectednode {
+    outline: 2px solid var(--tertiary);
+    outline-offset: 2px;
+  }
+}
+
+.fk-d-menu[data-identifier="svgbob-node-toolbar"] {
+  user-select: none;
+  z-index: z("composer", "dropdown");
+
+  .fk-d-menu__inner-content {
+    overflow: visible;
+  }
+
+  .toolbar__button {
+    background-color: var(--secondary);
+    color: var(--primary-medium);
+    border-radius: var(--d-border-radius);
+
+    .d-icon {
+      color: var(--primary-medium);
+    }
+
+    &:hover:not(:disabled) {
+      color: var(--primary);
+
+      .d-icon {
+        color: var(--primary);
+      }
+    }
+
+    &:active {
+      background: var(--secondary);
+    }
+
+    &:focus-visible {
+      @include default-focus;
+    }
+  }
+}
+
+.svgbob-editor-modal {
+  --modal-max-width: min(90vw, 1000px);
+
+  &__source {
+    width: 100%;
+    min-height: 50vh;
+    font-family: var(--d-font-family--monospace);
+    white-space: pre;
+  }
+
+  .d-modal__header {
+    position: relative;
+  }
+
+  &__expand {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-11);
+  }
+
+  &.--expanded {
+    --modal-max-width: 95vw;
+    --modal-max-height: 95vh;
+    --modal-min-height: 95vh;
+
+    .d-modal__body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .svgbob-editor-modal__source {
+      flex: 1;
+      min-height: 0;
+    }
+  }
+}

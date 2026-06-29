@@ -3,3 +3,10 @@ en:
     description: "Svgbob component"
 
   insert_svgbob_sample: "Svgbob diagram"
+  svgbob:
+    title: "Svgbob diagram"
+    edit: "Edit diagram"
+    source: "Diagram source"
+    save: "Save"
+    expand: "Expand"
+    collapse: "Collapse"

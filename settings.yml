@@ -3,6 +3,6 @@ extend_content_security_policy:
   type: list
   default: "script_src: https://unpkg.com/svgbob-wasm@0.4.1/svgbob_wasm_bg.wasm"
 svg_icons:
-  default: "diagram-project"
+  default: "diagram-project|pencil|expand|compress"
   type: "list"
   list_type: "compact"
