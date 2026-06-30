@@ -62,6 +62,7 @@
     margin: 0;
     padding: 0;
     background: none;
+    max-height: none;
 
     // match svgbob's 8x16 cell grid so the source ≈ the rendered SVG
     font-size: 13px;
