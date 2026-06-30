@@ -1,6 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 import SvgbobEditor from "../components/modal/svgbob-editor";
-import SvgbobDiagram from "../components/svgbob-diagram";
+import SvgbobInline from "../components/svgbob-inline";
 import svgbobExtension from "../lib/rich-editor-extension";
 
 const SAMPLE = "*-------------*\n| hello world |\n*-------------*";
@@ -14,7 +14,7 @@ function renderSvgbob(element, helper) {
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("svgbob-wrapper");
-    helper.renderGlimmer(wrapper, SvgbobDiagram, { content });
+    helper.renderGlimmer(wrapper, SvgbobInline, { content });
     pre.replaceWith(wrapper);
   });
 }
