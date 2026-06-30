@@ -68,12 +68,6 @@
     line-height: 16px;
   }
 
-  &__svg {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: svgbob-fade-in 0.2s ease-in;
-    }
-  }
-
   &__loading {
     position: absolute;
     inset: 0;
@@ -133,16 +127,6 @@
   tspan.head {
     fill: none;
     stroke: none;
-  }
-}
-
-@keyframes svgbob-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 
